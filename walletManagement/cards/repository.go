@@ -2,7 +2,6 @@ package cards
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"time"
 
@@ -10,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func getCardsRepo() []Card {
+func getCardsRepo() []*Card {
 
 	collection := utils.DbConnection.Database("jamboree").Collection("cards")
 
@@ -22,20 +21,15 @@ func getCardsRepo() []Card {
 		log.Fatal(err)
 	}
 	defer cur.Close(ctx)
-	cards := []Card{}
+	var cards []*Card
 	for cur.Next(ctx) {
-		var result bson.D
-		err := cur.Decode(&result)
+		var card Card
+		err := cur.Decode(&card)
 		if err != nil {
 			log.Fatal(err)
 		}
-		// do something with result....
-		// card := Card{Id: result[0]._id, Name: result[1].name}
-		for _, value := range result {
-			fmt.Println(value.Value)
 
-		}
-		// append(cards, card)
+		cards = append(cards, &card)
 	}
 	if err := cur.Err(); err != nil {
 		log.Fatal(err)

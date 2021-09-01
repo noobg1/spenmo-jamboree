@@ -1,5 +1,5 @@
 package cards
 
-func GetCardsService() []Card {
+func GetCardsService() []*Card {
 	return getCardsRepo()
 }
