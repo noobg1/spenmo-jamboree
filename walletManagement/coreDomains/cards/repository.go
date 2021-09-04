@@ -41,7 +41,6 @@ func (userRepo userRepoImpl) createCard(card Card) {
 }
 
 func (userRepo userRepoImpl) getCards() ([]Card, error) {
-
 	collection, ctx, cancel := collectionInit()
 	defer cancel()
 

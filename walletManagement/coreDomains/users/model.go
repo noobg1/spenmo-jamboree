@@ -1,6 +1,6 @@
 package users
 
-import "github.com/spenmo-jamboree/walletManagement/cards"
+import "github.com/spenmo-jamboree/walletManagement/coreDomains/cards"
 
 type User struct {
 	cards.Card

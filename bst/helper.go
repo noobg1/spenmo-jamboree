@@ -7,7 +7,6 @@ func insertToBST(root *TreeNode, value int) *TreeNode {
 	}
 
 	if (TreeNode{}) == *root {
-		// case when the node is root (structs cant be assigned to nil)
 		*root = TreeNode{value: value, left: nil, right: nil}
 		return root
 	}

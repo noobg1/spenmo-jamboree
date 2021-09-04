@@ -1,7 +1,7 @@
 package wallets
 
 import (
-	"github.com/spenmo-jamboree/walletManagement/cards"
+	"github.com/spenmo-jamboree/walletManagement/coreDomains/cards"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
