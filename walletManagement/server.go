@@ -15,7 +15,7 @@ func RouterInit() {
 	router := gin.Default()
 	// router.Use(DummyMiddleware())
 	router.GET("/cards", cards.HandleGetCards)
-	// router.POST("/albums", postAlbums)
+	router.POST("/cards", cards.HandleCreateCards)
 	// router.GET("/albums/:id", getAlbumByID)
 
 	url := ginSwagger.URL("http://localhost:8080/swagger/doc.json") // The url pointing to API definition

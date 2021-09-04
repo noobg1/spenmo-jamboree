@@ -5,15 +5,25 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/spenmo-jamboree/walletManagement/common"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var DbConnection = Connection()
+type dbConnection interface {
+	Connection() *mongo.Client
+}
 
-func Connection() *mongo.Client {
+type dbConnectionImpl struct{}
+
+var (
+	dbConnectionInstance dbConnection = dbConnectionImpl{}
+	DbConnection                      = dbConnectionInstance.Connection()
+)
+
+func (dbConnection dbConnectionImpl) Connection() *mongo.Client {
 	// Set client options
-	clientOptions := options.Client().ApplyURI("mongodb+srv://jamboree:spenmo@cluster0.tkoku.mongodb.net/jamboree")
+	clientOptions := options.Client().ApplyURI(common.DB_CONNECTION_STRING)
 
 	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)
