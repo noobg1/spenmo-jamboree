@@ -12,7 +12,7 @@ import (
 )
 
 type userRepo interface {
-	getCards() []Card
+	getCards() ([]Card, error)
 	createCard(card Card)
 }
 
@@ -40,7 +40,7 @@ func (userRepo userRepoImpl) createCard(card Card) {
 	}
 }
 
-func (userRepo userRepoImpl) getCards() []Card {
+func (userRepo userRepoImpl) getCards() ([]Card, error) {
 
 	collection, ctx, cancel := collectionInit()
 	defer cancel()
@@ -65,5 +65,5 @@ func (userRepo userRepoImpl) getCards() []Card {
 		log.Fatal(err)
 	}
 
-	return cards
+	return cards, err
 }

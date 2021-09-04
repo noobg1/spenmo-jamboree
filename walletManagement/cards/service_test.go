@@ -7,11 +7,11 @@ import (
 )
 
 type userRepoMock struct {
-	getCardsRepoMock func() []Card
+	getCardsRepoMock func() ([]Card, error)
 	createCardMock   func(card Card)
 }
 
-func (mock userRepoMock) getCards() []Card {
+func (mock userRepoMock) getCards() ([]Card, error) {
 	return mock.getCardsRepoMock()
 }
 
@@ -20,17 +20,17 @@ func (mock userRepoMock) createCard(card Card) {
 
 func TestGetCards(test *testing.T) {
 	// GIVEN
-	serviceMock := userRepoMock{}
+	repoMock := userRepoMock{}
 	cardList := []Card{
 		{Name: "test"},
 	}
-	serviceMock.getCardsRepoMock = func() []Card {
-		return cardList
+	repoMock.getCardsRepoMock = func() ([]Card, error) {
+		return cardList, nil
 	}
-	UserRepo = serviceMock
+	UserRepo = repoMock
 
 	// WHEN
-	result := UserService.getCards()
+	result, _ := UserService.getCards()
 
 	// THEN
 	assert.Equal(test, result, cardList)
@@ -38,14 +38,14 @@ func TestGetCards(test *testing.T) {
 
 func TestCreateCards(test *testing.T) {
 	// GIVEN
-	serviceMock := userRepoMock{}
+	repoMock := userRepoMock{}
 	card := Card{
 		Name: "test",
 	}
-	serviceMock.createCardMock = func(card Card) {
+	repoMock.createCardMock = func(card Card) {
 	}
 
-	UserRepo = serviceMock
+	UserRepo = repoMock
 
 	// WHEN
 	UserService.createCards(card)

@@ -17,8 +17,8 @@ type dbConnection interface {
 type dbConnectionImpl struct{}
 
 var (
-	dbConnectionInstance dbConnection = dbConnectionImpl{}
-	DbConnection                      = dbConnectionInstance.Connection()
+	DbConnectionInstance dbConnection = dbConnectionImpl{}
+	DbConnection                      = DbConnectionInstance.Connection()
 )
 
 func (dbConnection dbConnectionImpl) Connection() *mongo.Client {
