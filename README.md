@@ -1,15 +1,16 @@
 This document helps in pointing to respective documentation
 
 ```
-// Please clone the repo
+#  Please Clone the repo
 git clone https://github.com/noobg1/spenmo-jamboree.git
-// and navigate as below
 ```
 
-1. Find element in BST
+Navigate to respective sub-projects (for simplicity kept together)
 
-2. Output truthy if sequence is contained in an array
+1. [Find element in BST](https://github.com/noobg1/spenmo-jamboree/tree/master/bst])
 
-3. Schema Design
+2. [Output truthy if sequence is contained in an array](https://github.com/noobg1/spenmo-jamboree/tree/master/numberSequence)
 
-4. Wallet Management: REST service
+3. [Schema Design](https://github.com/noobg1/spenmo-jamboree/tree/master/schemaModeling)
+
+4. [Wallet Management: REST service](https://github.com/noobg1/spenmo-jamboree/tree/master/walletManagement)

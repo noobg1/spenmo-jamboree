@@ -77,6 +77,7 @@ http://localhost:8080/swagger/doc.json
 6. Each domain contains it's one model, controller, service, repository files
 7. Further the domains can be broken down to subdomains as code grows
 8. Communication between domains strictly by calling `Service` layer
+9. REST endpoints (structured to be extensible for grpc, event driveb/ pub-sub, graphql)
 ### TODOs in mind
 
 Functional requirements:
