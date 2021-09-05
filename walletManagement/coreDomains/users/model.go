@@ -1,9 +1,11 @@
 package users
 
-import "github.com/spenmo-jamboree/walletManagement/coreDomains/cards"
+import (
+	"github.com/spenmo-jamboree/walletManagement/coreDomains/wallets"
+)
 
 type User struct {
-	cards.Card
-	id   string `json:"id"`
-	name string `json:"name"`
+	wallets.UserWallet
+	Id   string `json:"id"`
+	Name string `json:"name"`
 }
