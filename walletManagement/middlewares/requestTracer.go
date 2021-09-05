@@ -4,7 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"github.com/spenmo-jamboree/walletManagement/common"
-	"github.com/spenmo-jamboree/walletManagement/utils"
 )
 
 func Tracer() gin.HandlerFunc {
@@ -14,7 +13,6 @@ func Tracer() gin.HandlerFunc {
 			requestTenant = uuid.New().String()
 		}
 		context.Set(common.TRACER_ID, requestTenant)
-		utils.AddValue(requestTenant)
 		context.Next()
 	}
 }
