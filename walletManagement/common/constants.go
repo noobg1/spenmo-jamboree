@@ -11,6 +11,7 @@ var (
 	REDIS_PASS_ENV          string = os.Getenv("REDIS_PASS")
 	ENABLE_RATE_LIMITING    string = os.Getenv("ENABLE_RATE_LIMITING")
 	REDIS_CONNECTION_STRING string = "redis://default:" + REDIS_PASS_ENV + "@redis-19802.c252.ap-southeast-1-1.ec2.cloud.redislabs.com:19802/0"
+	TRACER_ID               string = "x-tracer-id"
 )
 
 const (

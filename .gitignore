@@ -1,3 +1,5 @@
 main.go
 routes.go
 *docs/
+*.log
+*todo*
