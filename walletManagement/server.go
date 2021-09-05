@@ -29,6 +29,7 @@ func RouterInit() {
 	// Init routes
 	router.GET(cards.BaseRoute, cards.HandleGetCards)
 	router.POST(cards.BaseRoute, cards.HandleCreateCards)
+	router.DELETE(cards.BaseRoute+"/:id", cards.HandleDeleteCard)
 
 	// Init swagger serve TODO: disable in prod env
 	url := ginSwagger.URL(SWAGGER_URI) // The url pointing to API definition

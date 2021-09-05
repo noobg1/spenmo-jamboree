@@ -1,10 +1,6 @@
 package common
 
-type AppError struct {
-	message string
-	code    int
-}
-
 var (
-	INTERNAL_SERVER_ERROR = AppError{message: "Internal server error", code: 500}
+	INTERNAL_SERVER_ERROR             = "Internal server error"
+	MONTHLY_LIMIT_IS_LOWER_THAN_DAILY = "Monthly limit is lower than dailyLimit"
 )

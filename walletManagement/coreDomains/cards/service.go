@@ -2,7 +2,8 @@ package cards
 
 type userService interface {
 	getCards() ([]Card, error)
-	createCards(card Card)
+	createCards(card Card) error
+	deleteCard(id string) (int64, error)
 }
 
 type userServiceImpl struct{}
@@ -16,10 +17,20 @@ func (userService userServiceImpl) getCards() ([]Card, error) {
 	return cards, err
 }
 
-func (userService userServiceImpl) createCards(card Card) {
+func (userService userServiceImpl) deleteCard(id string) (int64, error) {
+	deleteCount, err := UserRepo.deleteCard(id)
+	return deleteCount, err
+}
+
+func (userService userServiceImpl) createCards(card Card) error {
 	newCard := Card{
-		Name: card.Name,
+		Name:         card.Name,
+		WalletType:   card.WalletType,
+		WalletId:     card.WalletId,
+		DailyLimit:   card.DailyLimit,
+		MonthlyLimit: card.MonthlyLimit,
 	}
 
-	UserRepo.createCard(newCard)
+	err := UserRepo.createCard(newCard)
+	return err
 }
